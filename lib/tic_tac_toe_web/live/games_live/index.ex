@@ -18,6 +18,7 @@ defmodule TicTacToeWeb.GamesLive.Index do
   end
 
   def handle_event("piece-selected", %{"piece" => piece}, socket) do
-    {:noreply, assign(socket, piece: piece, select_piece: false)}
+    ai_piece = Enum.filter(@pieces, fn item -> item != piece end) |> hd()
+    {:noreply, assign(socket, piece: piece, ai_piece: ai_piece, select_piece: false)}
   end
 end

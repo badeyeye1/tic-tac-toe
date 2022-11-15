@@ -34,6 +34,16 @@ defmodule TicTacToeWeb.GamesLiveTest do
            |> render_click() =~ "You are: O"
   end
 
+  test "Computer is assigned alternate player after user select mode", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    open_selection_modal(view)
+
+    assert view
+           |> player_option("X")
+           |> render_click() =~ "Kyle the computer is: O"
+  end
+
   defp select_piece_button(view) do
     element(view, "[data-role='piece-selector-btn']")
   end

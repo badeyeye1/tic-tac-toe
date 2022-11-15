@@ -1,5 +1,8 @@
 <div id="game-board">
-  <p :if={@piece}>You are: <%= @piece %></p>
+  <div :if={@piece} class="flex flex-row justify-between">
+    <p class="flex">You are: <%= @piece %></p>
+    <p class="flex">Kyle the computer is: <%= @ai_piece %></p>
+  </div>
   <div class="flex grid grid-cols-3 border-2 bg-orange-200 border-red-200">
     <div
       :for={{cell, val} <- @board}
