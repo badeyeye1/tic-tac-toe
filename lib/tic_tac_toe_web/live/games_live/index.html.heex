@@ -16,6 +16,7 @@
 </div>
 
 <button
+  :if={!@piece}
   phx-click="select-piece"
   data-role="piece-selector-btn"
   class="rounded-full bg-orange-200 px-4 py-2 my-4"

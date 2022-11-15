@@ -44,6 +44,18 @@ defmodule TicTacToeWeb.GamesLiveTest do
            |> render_click() =~ "Kyle the computer is: O"
   end
 
+  test "Player cannot switch piece after selection", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    open_selection_modal(view)
+
+    view
+    |> player_option("X")
+    |> render_click()
+
+    refute view |> select_piece_button() |> has_element?()
+  end
+
   defp select_piece_button(view) do
     element(view, "[data-role='piece-selector-btn']")
   end
