@@ -59,7 +59,8 @@ config :tic_tac_toe, TicTacToeWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/tic_tac_toe_web/(live|views)/.*(ex)$",
-      ~r"lib/tic_tac_toe_web/templates/.*(eex)$"
+      ~r"lib/tic_tac_toe_web/templates/.*(eex)$",
+      ~r"lib/tic_tac_toe_web/components/.*(eex)$"
     ]
   ]
 

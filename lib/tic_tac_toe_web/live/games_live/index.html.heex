@@ -1,0 +1,12 @@
+<div id="game-board">
+  <div class="flex grid grid-cols-3 border-2 bg-orange-200 border-red-200">
+    <div
+      :for={{cell, val} <- @board}
+      phx-click={!val && "cell-selected"}
+      phx-value-cell={cell}
+      class="flex justify-center items-center text-white text-6xl h-32 w-34 border-4 border-black gap-0 board-cell"
+    >
+      <%= val %>
+    </div>
+  </div>
+</div>
