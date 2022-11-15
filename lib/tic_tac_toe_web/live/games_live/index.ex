@@ -21,4 +21,12 @@ defmodule TicTacToeWeb.GamesLive.Index do
     ai_piece = Enum.filter(@pieces, fn item -> item != piece end) |> hd()
     {:noreply, assign(socket, piece: piece, ai_piece: ai_piece, select_piece: false)}
   end
+
+  def handle_event("cell-selected", %{"cell" => cell}, socket) do
+    %{assigns: %{piece: piece, board: board}} = socket
+    key = String.to_existing_atom(cell)
+    board = Map.put(board, key, piece)
+
+    {:noreply, assign(socket, board: board)}
+  end
 end

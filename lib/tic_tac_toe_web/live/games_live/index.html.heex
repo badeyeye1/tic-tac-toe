@@ -8,6 +8,7 @@
       :for={{cell, val} <- @board}
       phx-click={!val && "cell-selected"}
       phx-value-cell={cell}
+      id={"cell-#{cell}"}
       class="flex justify-center items-center text-white text-6xl h-32 w-34 border-4 border-black gap-0 board-cell"
     >
       <%= val %>
