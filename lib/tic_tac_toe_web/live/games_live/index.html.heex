@@ -25,6 +25,10 @@
   Select Player
 </button>
 
+<button phx-click="reset" class="rounded-full bg-orange-200 px-4 py-2 my-4">
+  Reset
+</button>
+
 <.modal :if={@select_piece} id="player-option" show on_cancel={JS.push("hide-selected")}>
   <.header>
     Select Cross or Naught

@@ -58,9 +58,7 @@ defmodule TicTacToeWeb.GamesLiveTest do
   test "Fill cell with player piece when clicked", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/")
 
-    view
-    |> open_selection_modal()
-    |> select_piece("X")
+    select_piece(view, "X")
 
     cell = %Board{} |> Map.from_struct() |> Map.keys() |> Enum.random()
 
@@ -69,6 +67,14 @@ defmodule TicTacToeWeb.GamesLiveTest do
     |> render_click()
 
     assert has_element?(view, "#cell-#{cell}", "X")
+  end
+
+  test "Computer can play after user turn", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    view
+    |> open_selection_modal()
+    |> select_piece("X")
   end
 
   defp select_piece_button(view) do
@@ -97,6 +103,7 @@ defmodule TicTacToeWeb.GamesLiveTest do
 
   defp select_piece(view, piece) do
     view
+    |> open_selection_modal()
     |> player_option(piece)
     |> render_click()
 
